@@ -7,7 +7,7 @@
       pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
       treefmt-nix.url = "github:numtide/treefmt-nix";
       nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
-      devenv.url = "github:cachix/devenv?dir=src/modules";
+      devenv.url = "github:use-the-fork/devenv?dir=src/modules";
       } // (if builtins.pathExists (devenv_dotfile + "/flake.json")
       then builtins.fromJSON (builtins.readFile (devenv_dotfile +  "/flake.json"))
       else { });
