@@ -12,7 +12,7 @@ let
     serverurl = ${cfg.supervisorctl.url}:${toString cfg.supervisorctl.port}
 
     [inet_http_server]
-    port = 127.0.0.1:${toString cfg.inet_http_server.port}
+    port = 127.0.0.1:${toString cfg.supervisorctl.port}
   '';
 
   programSections = lib.concatStringsSep "\n" (lib.filter (s: s != "") (lib.mapAttrsToList (name: program:
