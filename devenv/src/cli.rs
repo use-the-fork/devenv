@@ -3,6 +3,7 @@ use std::path::PathBuf;
 
 #[derive(Parser)]
 #[command(
+    name = "devenv",
     color = clap::ColorChoice::Auto,
     // for --clean to work with subcommands
     subcommand_precedence_over_arg = true,
@@ -45,6 +46,9 @@ pub struct GlobalOptions {
         help = "Relax the hermeticity of the environment."
     )]
     pub impure: bool,
+
+    #[arg(long, global = true, help = "Use flake cache for evaluation results.")]
+    pub eval_cache: bool,
 
     #[arg(
         long,
@@ -96,6 +100,7 @@ impl Default for GlobalOptions {
             cores: 2,
             system: default_system(),
             impure: false,
+            eval_cache: false,
             offline: false,
             clean: None,
             nix_debugger: false,
