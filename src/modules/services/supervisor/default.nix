@@ -15,12 +15,14 @@ let
     port = 127.0.0.1:${toString cfg.supervisorctl.port}
   '';
 
-  programSections = lib.concatStringsSep "\n" (lib.filter (s: s != "") (lib.mapAttrsToList (name: program:
-    if program.enable then
-      program.program
-    else
-      ""
-  ) cfg.programs));
+  programSections = lib.concatStringsSep "\n" (lib.filter (s: s != "") (lib.mapAttrsToList
+    (name: program:
+      if program.enable then
+        program.program
+      else
+        ""
+    )
+    cfg.programs));
 
   configFile = pkgs.writeText "supervisor.conf" ''
     [supervisord]
@@ -91,7 +93,7 @@ in
           };
         };
       });
-      default = {};
+      default = { };
       description = "Configuration for each program.";
     };
   };
@@ -101,17 +103,17 @@ in
       cfg.package
     ];
 
-    processes.supervisor.exec =''
-        set -euxo pipefail
-        exec ${supervisorWrapper}
-      '';
+    processes.supervisor.exec = ''
+      set -euxo pipefail
+      exec ${supervisorWrapper}
+    '';
 
     scripts = mkIf cfg.supervisorctl.enable {
       supervisorctl = {
-        exec =''
-            set -euxo pipefail
-            exec ${supervisorctlWrapper}
-          '';
+        exec = ''
+          set -euxo pipefail
+          exec ${supervisorctlWrapper}
+        '';
       };
     };
   };
