@@ -31629,7 +31629,7 @@ boolean
 
 
 *Default:*
-` true `
+` false `
 
 *Declared by:*
  - [https://github.com/cachix/devenv/blob/main/src/modules/scripts.nix](https://github.com/cachix/devenv/blob/main/src/modules/scripts.nix)
@@ -35981,6 +35981,184 @@ If port 0 is specified Redis, will not listen on a TCP socket.
 
 *Declared by:*
  - [https://github.com/cachix/devenv/blob/main/src/modules/services/redis.nix](https://github.com/cachix/devenv/blob/main/src/modules/services/redis.nix)
+
+
+
+## services.supervisor.enable
+
+
+
+Whether to enable Supervisor Service.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.package
+
+
+
+Supervisor package
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` <derivation python3.12-supervisor-4.2.5> `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.programs
+
+
+
+Configuration for each program.
+
+
+
+*Type:*
+attribute set of (submodule)
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.programs.\<name>.enable
+
+
+
+Whether to enable Enable this program.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.programs.\<name>.program
+
+
+
+The program configuration. See http://supervisord.org/configuration.html\#program-x-section-settings
+
+
+
+*Type:*
+strings concatenated with “\\n”
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.supervisorctl.enable
+
+
+
+Whether to enable Enable supervisorctl.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.supervisorctl.port
+
+
+
+Port for supervisorctl
+
+
+
+*Type:*
+signed integer
+
+
+
+*Default:*
+` 65123 `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
+
+
+
+## services.supervisor.supervisorctl.url
+
+
+
+URL for supervisorctl
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "http://localhost" `
+
+*Declared by:*
+ - [https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor](https://github.com/cachix/devenv/blob/main/src/modules/services/supervisor)
 
 
 
